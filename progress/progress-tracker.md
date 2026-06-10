@@ -11,8 +11,8 @@
 | Day | Topic | Status | Date Completed | Notes / Struggles |
 |-----|-------|--------|---------------|-------------------|
 | Day 1 | Python Basics | ✅ Done | 2026-06-09 | Covered variables, loops, functions, data structures (tuple, set, stack, queue, generator) |
-| Day 2 | Python Intermediate | ⬜ Not Started | | |
-| Day 3 | FastAPI Introduction | ⬜ Not Started | | |
+| Day 2 | Python Intermediate | ✅ Done | 2026-06-10 | Lists & Dicts, Classes & OOP, Modules & Imports. Practised inheritance, composition, namedtuple, datetime, own modules |
+| Day 3 | FastAPI Introduction | ✅ Done | 2026-06-11 | Built GET endpoints, path params, query params, mixed params. Fixed: return dict not string, avoid duplicate endpoints, remove unreachable `pass` after return |
 | Day 4 | SQLite + SQLAlchemy | ⬜ Not Started | | |
 | Day 5 | CRUD Part 1: Create & Read | ⬜ Not Started | | |
 | Day 6 | CRUD Part 2: Update & Delete | ⬜ Not Started | | |
@@ -28,8 +28,8 @@
 | Day | Exercise | Completed | Comments |
 |-----|----------|-----------|----------|
 | Day 1 | Filter tasks by status (function) | ✅ | Used for loop, while loop, and explored tuple, set, stack, queue, generator. Minor fixes: `{}` vs `set()`, dict key access `task["status"]` |
-| Day 2 | `Task` class with title, status, display | ⬜ | |
-| Day 3 | `/hello/{name}` endpoint | ⬜ | |
+| Day 2 | `Task` class with title, status, display | ✅ | Completed OOP exercises — `__init__`, `__str__`, inheritance (`UrgentTask`), composition (`TaskList`). Minor fixes: `super()` needs `()`, `Task4` not `Task` for class variable |
+| Day 3 | `/hello/{name}` endpoint | ✅ | Completed all 5 exercises — path params, int params, query params with defaults, mixed path+query. Fixed: return dict not string, duplicate endpoints, unreachable pass |
 | Day 4 | Create DB and verify `tasks` table | ⬜ | |
 | Day 5 | Test Create & Read in Swagger UI | ⬜ | |
 | Day 6 | Test all 5 CRUD endpoints | ⬜ | |
@@ -42,15 +42,17 @@
 
 - `{}` creates a **dict**, not a **set** — use `set()` for empty sets
 - Dictionary key access: use `task["status"]` not `task.status`
-- Loop logic when modifying collections — prefer `while _stack:` over index-based loops
+- `super()` needs `()` — use `super().__init__()` not `super.__init__()`
+- strftime format codes: `%m` = month, `%d` = day (case-sensitive — `%M` = minutes!)
+- Class variable: always reference own class name e.g. `Task4.task_count` not `Task.task_count`
 
 ---
 
 ## Overall Progress
 
 - [x] Day 1 Complete
-- [ ] Day 2 Complete
-- [ ] Day 3 Complete
+- [x] Day 2 Complete
+- [x] Day 3 Complete
 - [ ] Day 4 Complete
 - [ ] Day 5 Complete
 - [ ] Day 6 Complete
