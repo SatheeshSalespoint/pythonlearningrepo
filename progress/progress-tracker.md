@@ -15,7 +15,7 @@
 | Day 3 | FastAPI Introduction | ✅ Done | 2026-06-11 | Built GET endpoints, path params, query params, mixed params. Fixed: return dict not string, avoid duplicate endpoints, remove unreachable `pass` after return |
 | Day 4 | SQLite + SQLAlchemy | ✅ Done | 2026-06-12 | Installed SQLAlchemy. Created database.py (engine, SessionLocal, get_db with yield). Created models.py (Task with 5 columns: id, title, description, is_done, created_at). Learnt: ORM concept, Column types, nullable vs default, index, sessions, Depends injection pattern, Alembic for migrations. Verified table in DB Browser |
 | Day 5 | CRUD Part 1: Create & Read | ✅ Done | 2026-06-15 | Created schemas.py (Pydantic DTOs). Implemented POST /tasks, GET /tasks, GET /tasks/{id}. Bonus: status filter, description field, task count endpoint. Learnt: Pydantic vs SQLAlchemy models, response_model, db.query chain, endpoint order matters, no duplicate routes |
-| Day 6 | CRUD Part 2: Update & Delete | ⬜ Not Started | | |
+| Day 6 | CRUD Part 2: Update & Delete | ✅ Done | 2026-06-16 | Implemented PUT /tasks/{id} and DELETE /tasks/{id}. Added TaskUpdate schema (all optional fields). Error handling with 404. Removed duplicate GET /tasks endpoint. |
 | Day 7 | Polish & Review | ⬜ Not Started | | |
 
 **Status Legend:**  
@@ -32,7 +32,7 @@
 | Day 3 | `/hello/{name}` endpoint | ✅ | Completed all 5 exercises — path params, int params, query params with defaults, mixed path+query. Fixed: return dict not string, duplicate endpoints, unreachable pass |
 | Day 4 | Create DB and verify `tasks` table | ✅ | Ran uvicorn, tasks.db created on disk. Learnt: create_all() only creates, doesn't alter — delete db to reset during dev |
 | Day 5 | Test Create & Read in Swagger UI | ✅ | Tested POST /tasks, GET /tasks, GET /tasks/{id}, GET /tasks/count, GET /tasks?status=pending in Swagger UI and Postman. Fixed: duplicate endpoints, `description: str = True` typo, response_model can't be a dict, don't call endpoint functions directly |
-| Day 6 | Test all 5 CRUD endpoints | ⬜ | |
+| Day 6 | Test all 5 CRUD endpoints | ✅ | Tested POST, GET, GET by ID, PUT (partial update), DELETE. Verified 404 on deleted task. |
 | Day 7 | Full API end-to-end test | ⬜ | |
 
 ---
@@ -63,5 +63,5 @@
 - [x] Day 3 Complete
 - [x] Day 4 Complete
 - [x] Day 5 Complete
-- [ ] Day 6 Complete
+- [x] Day 6 Complete
 - [ ] Day 7 Complete — 🎉 **API Built!**

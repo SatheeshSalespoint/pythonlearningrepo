@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends,HTTPException
 from sqlalchemy.orm import Session
 from database import engine, get_db, Base
 from models import Task
-from schemas import TaskCreate, TaskResponse
+from schemas import TaskCreate, TaskResponse,TaskUpdate
 
 app = FastAPI()
 
@@ -81,14 +81,32 @@ def get_task(task_id : int, db:Session = Depends(get_db)):
         raise HTTPException(status_code= 404, detail= "Task not found")
     return task
 
-# Filter tasks by status
-@app.get("/tasks", response_model= list[TaskResponse])
-def get_task(db:Session = Depends(get_db),status : str = None):
-     if status:
-         tasks = db.query(Task).filter(Task.status == status).all()
-     else:
-         tasks = db.query(Task).all()
-     return tasks
+@app.put("/tasks/{task_id}", response_model=TaskResponse)
+def update_task(task_id: int, updates: TaskUpdate, db: Session = Depends(get_db)):
+    task = db.query(Task).filter(Task.id == task_id).first()
+    if task is None:
+        raise HTTPException(status_code= 404, detail="Task not found")
+    if updates.title is not None:
+        task.title= updates.title
+    if updates.status is not None:
+        task.status= updates.status
+    if updates.description is not None:
+        task.description = updates.description
+
+    db.commit()
+    db.refresh(task)
+    return task
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int, db: Session = Depends(get_db)):
+    task = db.query(Task).filter(Task.id == task_id).first()
+    if task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+ 
+    db.delete(task)
+    db.commit()
+    return {"message": f"Task {task_id} deleted successfully"}
+
 
 
 
