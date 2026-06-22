@@ -1,8 +1,8 @@
 # 📊 Learning Progress Tracker
 
-**Goal:** Task Management API with FastAPI + SQLite + SQLAlchemy  
+**Goal:** Become an AI Engineer — Python + FastAPI + Data + AI APIs  
 **Start Date:** 2026-06-09  
-**Target End Date:** 2026-06-15
+**Target End Date:** 3-month plan (Phase 2 target: 2026-06-30)
 
 ---
 
@@ -17,7 +17,14 @@
 | Day 5 | CRUD Part 1: Create & Read | ✅ Done | 2026-06-15 | Created schemas.py (Pydantic DTOs). Implemented POST /tasks, GET /tasks, GET /tasks/{id}. Bonus: status filter, description field, task count endpoint. Learnt: Pydantic vs SQLAlchemy models, response_model, db.query chain, endpoint order matters, no duplicate routes |
 | Day 6 | CRUD Part 2: Update & Delete | ✅ Done | 2026-06-16 | Implemented PUT /tasks/{id} and DELETE /tasks/{id}. Added TaskUpdate schema (all optional fields). Error handling with 404. Removed duplicate GET /tasks endpoint. |
 | Day 7 | Input Validation & Pipeline | ✅ Done | 2026-06-17 | Learned Pydantic validation (Field constraints, @field_validator, @model_validator) and FastAPI dependency injection (Depends()) for business rules. Compared to C# DataAnnotations and ActionFilters. Cleaned up code with docstrings. Validation topics: min/max length, custom validators, cross-field validation, business rules in dependencies. Key insight: Response schemas shouldn't inherit input validation rules. |
-| Day 8 | Exception Handlers & Middleware | ⬜ Not Started | | Custom error responses, middleware for logging/headers, full request pipeline |
+| Day 8 | Exception Handlers & Middleware | ✅ Done | 2026-06-23 | Custom HTTPException + RequestValidationError handlers (consistent error shape). BusinessRuleError custom exception class. Logging middleware with timing. X-Request-ID header middleware. Full pipeline: Middleware → Pydantic (422) → Depends/BusinessRuleError (400) → Endpoint (404/500) → Middleware |
+| Day 9 | NumPy Basics | ⬜ Not Started | | Arrays, operations, slicing, aggregations — foundation for AI/ML |
+| Day 10 | Pandas Basics | ⬜ Not Started | | DataFrames, CSV, filtering, missing values — data exploration |
+| Day 11 | Calling External APIs | ⬜ Not Started | | requests library, try/except, API keys, .env files |
+| Day 12 | OpenAI API Basics | ⬜ Not Started | | First LLM integration, chat completions, system/user/assistant roles |
+| Day 13 | Prompt Engineering | ⬜ Not Started | | Zero-shot, few-shot, chain-of-thought, prompt templates |
+| Day 14 | LangChain Basics | ⬜ Not Started | | ChatPromptTemplate, chains, LLM abstraction |
+| Day 15 | Mini Project: AI FastAPI Endpoint | ⬜ Not Started | | AI-powered task summariser + priority suggester in FastAPI |
 
 **Status Legend:**  
 ⬜ Not Started &nbsp;|&nbsp; 🔄 In Progress &nbsp;|&nbsp; ✅ Done &nbsp;|&nbsp; 🔁 Needs Revisit
@@ -35,7 +42,7 @@
 | Day 5 | Test Create & Read in Swagger UI | ✅ | Tested POST /tasks, GET /tasks, GET /tasks/{id}, GET /tasks/count, GET /tasks?status=pending in Swagger UI and Postman. Fixed: duplicate endpoints, `description: str = True` typo, response_model can't be a dict, don't call endpoint functions directly |
 | Day 6 | Test all 5 CRUD endpoints | ✅ | Tested POST, GET, GET by ID, PUT (partial update), DELETE. Verified 404 on deleted task. |
 | Day 7 | Pydantic validation exercises | ✅ | Completed: Field(min_length, max_length) on title; @field_validator for status enum; @model_validator for "done requires description"; Depends() for "urgent tasks must be in-progress". Tested all scenarios in Postman. Learned validation pipeline order: Pydantic (422) → Dependencies (400/custom) → Endpoint |
-| Day 8 | Exception handlers & middleware | ⬜ | Custom 422 format, BusinessRuleError exception, request logging middleware, X-Request-ID headers, full pipeline test |
+| Day 8 | Exception handlers & middleware | ✅ | Custom HTTPException/422 handlers for consistent error shape. BusinessRuleError class. Logging + X-Request-ID middleware. Full pipeline test in Postman. |
 
 ---
 
@@ -61,8 +68,12 @@
 - Response schemas shouldn't inherit from input schemas — keeps validation separate
 - `Depends()` = C# `ActionFilter` / dependency injection — runs after Pydantic validation
 - Validation pipeline: Pydantic validators (422) → Dependencies (custom status) → Endpoint
-- `is` checks object identity, `==` checks value equality — use `==` for strings
-- In Python, validators must be @classmethod and return the value/object
+- `await call_next(request)` in middleware is required — without it you get a coroutine object, not a Response (causes AttributeError)
+- Middleware must always `return response` — forgetting this means the client gets no response
+- `@app.exception_handler()` stores handlers in a dict — last registered handler wins if duplicated
+- `__init__` stores data with `self.message = ...` — it never returns values
+- Exception handlers need `async def` and must return a `JSONResponse`
+- Set response headers AFTER `await call_next(request)` — not before
 
 ---
 
@@ -75,4 +86,11 @@
 - [x] Day 5 Complete
 - [x] Day 6 Complete
 - [x] Day 7 Complete — 🎉 **Input Validation Mastered!**
-- [ ] Day 8 Complete — Advanced Pipeline & Error Handling
+- [x] Day 8 Complete — 🎉 **Exception Handlers & Middleware Mastered!**
+- [ ] Day 9 Complete — NumPy Basics
+- [ ] Day 10 Complete — Pandas Basics
+- [ ] Day 11 Complete — Calling External APIs
+- [ ] Day 12 Complete — OpenAI API Basics
+- [ ] Day 13 Complete — Prompt Engineering
+- [ ] Day 14 Complete — LangChain Basics
+- [ ] Day 15 Complete — Mini Project: AI-Powered FastAPI Endpoint

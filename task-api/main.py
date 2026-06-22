@@ -1,10 +1,74 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException,RequestValidationError
 from sqlalchemy.orm import Session
 from database import engine, get_db, Base
 from models import Task
 from schemas import TaskCreate, TaskResponse, TaskUpdate
+import time
+import uuid
+
+
+class BusinessRuleError(Exception):
+     """Raised when a business rule is violated."""
+     def __init__(self, message: str):
+         self.message = message
 
 app = FastAPI(title="Task Management API", description="A simple CRUD API for managing tasks", version="1.0.0")
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+             "success": False,
+             "status_code": exc.status_code,
+             "message": exc.detail
+         }
+    )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    errors = exc.errors()
+    first_error = errors[0]
+    field = first_error["loc"][-1]   
+    message = first_error["msg"]     
+ 
+    return JSONResponse(
+         status_code=422,
+         content={
+             "success": False,
+             "status_code": 422,
+             "message": f"{field}: {message}"
+         }
+    )
+
+@app.exception_handler(BusinessRuleError)
+async def business_rule_exception_handler(request, exc):
+     return JSONResponse(
+         status_code=400,
+         content={
+             "success": False,
+             "status_code": 400,
+             "message": exc.message
+         }
+     )
+
+@app.middleware("http")
+async def logging_middleware(request, call_next):
+     request_id = str(uuid.uuid4())
+     start_time = time.time()
+ 
+     # â everything above here runs BEFORE the endpoint
+     response = await call_next(request)
+     # â everything below here runs AFTER the endpoint
+     response.headers["X-Request-ID"] = request_id
+ 
+     duration_ms = (time.time() - start_time) * 1000
+     print(f"â {request.method} {request.url.path} â {response.status_code} | {duration_ms:.2f}ms")
+    
+     return response
+     
 
 # Create all database tables on startup (safe to call multiple times — only creates if not exists)
 Base.metadata.create_all(bind=engine)
@@ -23,10 +87,11 @@ def health():
 def validate_urgent_tasks(task: TaskCreate):
      """Business rule: urgent tasks must be in-progress"""
      if "urgent" in task.title.lower() and task.status == "pending":
-         raise HTTPException(
-             status_code=400, 
-             detail="Tasks with 'urgent' in the title must have status 'in-progress'"
-         )
+          raise BusinessRuleError("Tasks with 'urgent' in the title must have status 'in-progress'")
+        #  raise HTTPException(
+        #      status_code=400, 
+        #      detail="Tasks with 'urgent' in the title must have status 'in-progress'"
+        #  )
      return task
 
 
