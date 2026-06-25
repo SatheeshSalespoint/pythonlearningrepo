@@ -18,7 +18,7 @@
 | Day 6 | CRUD Part 2: Update & Delete | ✅ Done | 2026-06-16 | Implemented PUT /tasks/{id} and DELETE /tasks/{id}. Added TaskUpdate schema (all optional fields). Error handling with 404. Removed duplicate GET /tasks endpoint. |
 | Day 7 | Input Validation & Pipeline | ✅ Done | 2026-06-17 | Learned Pydantic validation (Field constraints, @field_validator, @model_validator) and FastAPI dependency injection (Depends()) for business rules. Compared to C# DataAnnotations and ActionFilters. Cleaned up code with docstrings. Validation topics: min/max length, custom validators, cross-field validation, business rules in dependencies. Key insight: Response schemas shouldn't inherit input validation rules. |
 | Day 8 | Exception Handlers & Middleware | ✅ Done | 2026-06-23 | Custom HTTPException + RequestValidationError handlers (consistent error shape). BusinessRuleError custom exception class. Logging middleware with timing. X-Request-ID header middleware. Full pipeline: Middleware → Pydantic (422) → Depends/BusinessRuleError (400) → Endpoint (404/500) → Middleware |
-| Day 9 | NumPy Basics | ⬜ Not Started | | Arrays, operations, slicing, aggregations — foundation for AI/ML |
+| Day 9 | NumPy Basics | ✅ Done | 2026-06-25 | 1D & 2D arrays, slicing, boolean indexing, math ops, aggregations, broadcasting, copy vs view, np.where, dot product |
 | Day 10 | Pandas Basics | ⬜ Not Started | | DataFrames, CSV, filtering, missing values — data exploration |
 | Day 11 | Calling External APIs | ⬜ Not Started | | requests library, try/except, API keys, .env files |
 | Day 12 | OpenAI API Basics | ⬜ Not Started | | First LLM integration, chat completions, system/user/assistant roles |
@@ -43,6 +43,7 @@
 | Day 6 | Test all 5 CRUD endpoints | ✅ | Tested POST, GET, GET by ID, PUT (partial update), DELETE. Verified 404 on deleted task. |
 | Day 7 | Pydantic validation exercises | ✅ | Completed: Field(min_length, max_length) on title; @field_validator for status enum; @model_validator for "done requires description"; Depends() for "urgent tasks must be in-progress". Tested all scenarios in Postman. Learned validation pipeline order: Pydantic (422) → Dependencies (400/custom) → Endpoint |
 | Day 8 | Exception handlers & middleware | ✅ | Custom HTTPException/422 handlers for consistent error shape. BusinessRuleError class. Logging + X-Request-ID middleware. Full pipeline test in Postman. |
+| Day 9 | NumPy exercises (basics + advanced) | ✅ | Created exam scores array, aggregations, boolean indexing. Advanced: 2D sales matrix, axis operations, broadcasting, np.where, normalisation, dot product. |
 
 ---
 
@@ -74,6 +75,9 @@
 - `__init__` stores data with `self.message = ...` — it never returns values
 - Exception handlers need `async def` and must return a `JSONResponse`
 - Set response headers AFTER `await call_next(request)` — not before
+- NumPy slice = a VIEW not a copy — changing the slice changes the original! Use `.copy()` to avoid this
+- `axis=0` collapses DOWN rows (result per column), `axis=1` collapses ACROSS columns (result per row)
+- NumPy arrays print without commas — that's normal, not a bug
 
 ---
 
@@ -87,7 +91,7 @@
 - [x] Day 6 Complete
 - [x] Day 7 Complete — 🎉 **Input Validation Mastered!**
 - [x] Day 8 Complete — 🎉 **Exception Handlers & Middleware Mastered!**
-- [ ] Day 9 Complete — NumPy Basics
+- [x] Day 9 Complete — 🎉 **NumPy Basics + Advanced Mastered!**
 - [ ] Day 10 Complete — Pandas Basics
 - [ ] Day 11 Complete — Calling External APIs
 - [ ] Day 12 Complete — OpenAI API Basics
