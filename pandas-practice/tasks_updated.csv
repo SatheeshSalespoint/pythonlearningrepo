@@ -1,0 +1,11 @@
+id,title,status,priority,is_urgent,duration_hr,owner,duration_min,overdue
+1,Buy groceries,done,low,False,0.5,Alice,30.0,False
+2,Read Python book,pending,high,True,2.0,Bob,120.0,True
+3,Go for a run,done,medium,False,1.0,Alice,60.0,False
+4,Fix bug #42,in-progress,high,True,3.5,Charlie,210.0,False
+5,Write tests,pending,medium,False,2.5,Bob,150.0,False
+6,Team meeting,done,low,False,1.0,Alice,60.0,False
+7,Code review,in-progress,high,True,2.0,Charlie,120.0,False
+8,Update docs,pending,medium,False,1.5,Bob,90.0,False
+9,Deploy to prod,done,high,True,0.5,Unassigned,30.0,False
+10,Sprint planning,pending,low,False,2.0,Charlie,120.0,False

@@ -1,0 +1,11 @@
+student,subject,score,grade,passed,attempts
+Alice,Math,85.0,B,True,1
+Bob,Math,92.0,A,True,1
+Charlie,Science,78.0,C,True,2
+Diana,Math,,,,1
+Eve,Science,95.0,A,True,1
+Frank,English,60.0,D,False,3
+Grace,English,,,,2
+Hank,Science,88.0,B,True,1
+Ivy,Math,73.0,C,True,2
+Jack,English,55.0,F,False,3

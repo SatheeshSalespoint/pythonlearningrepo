@@ -1,0 +1,6 @@
+title,status,priority,is_urgent,duration_hr
+Buy groceries,done,low,False,0.5
+Read Python book,pending,high,True,2.0
+Go for a run,done,medium,False,1.0
+Fix bug #42,in-progress,high,True,3.5
+Write tests,pending,medium,False,2.5
