@@ -20,7 +20,7 @@
 | Day 8 | Exception Handlers & Middleware | ✅ Done | 2026-06-23 | Custom HTTPException + RequestValidationError handlers (consistent error shape). BusinessRuleError custom exception class. Logging middleware with timing. X-Request-ID header middleware. Full pipeline: Middleware → Pydantic (422) → Depends/BusinessRuleError (400) → Endpoint (404/500) → Middleware |
 | Day 9 | NumPy Basics | ✅ Done | 2026-06-25 | 1D & 2D arrays, slicing, boolean indexing, math ops, aggregations, broadcasting, copy vs view, np.where, dot product |
 | Day 10 | Pandas Basics | ✅ Done | 2026-06-30 | DataFrames, CSV, head/info/describe, filtering (&/|), missing values (fillna/dropna), groupby aggregations, derived columns. Extra practice with student dataset. |
-| Day 11 | Calling External APIs | ⬜ Not Started | | requests library, try/except, API keys, .env files |
+| Day 11 | Calling External APIs | ✅ Done | 2026-07-01 | requests library — GET/POST/PUT/PATCH/DELETE, headers, auth patterns (Bearer/API key/Basic), error handling (raise_for_status, retries, timeouts), Session, .env + python-dotenv. Deep dive + Q&A. |
 | Day 12 | OpenAI API Basics | ⬜ Not Started | | First LLM integration, chat completions, system/user/assistant roles |
 | Day 13 | Prompt Engineering | ⬜ Not Started | | Zero-shot, few-shot, chain-of-thought, prompt templates |
 | Day 14 | LangChain Basics | ⬜ Not Started | | ChatPromptTemplate, chains, LLM abstraction |
@@ -78,6 +78,12 @@
 - Set response headers AFTER `await call_next(request)` — not before
 - NumPy slice = a VIEW not a copy — changing the slice changes the original! Use `.copy()` to avoid this
 - `df.shape` is a property not a method — no parentheses (unlike `df.info()`)
+- `timeout=5` applies to both connect and read; `timeout=(3,10)` = 3s connect, 10s read — always set a timeout
+- Retry only on 5xx (server fault) — never on 4xx (client fault, retrying won't help)
+- `raise_for_status()` raises HTTPError for any 4xx or 5xx response
+- Bearer token pattern: `headers={"Authorization": f"Bearer {key}"}` — used by OpenAI, Groq, GitHub
+- `requests.Session()` reuses headers and TCP connections across multiple calls — use for AI API clients
+- `.env` file + `os.getenv()` = safe way to store API keys (never hardcode in source)
 - Always use `print()` in .py files — unlike Jupyter, results aren't auto-displayed
 - `df.loc` = label-based access, `df.iloc` = position-based access (differ when index is not 0,1,2...)
 - Use `&` and `|` for multi-condition filters in Pandas — not Python's `and`/`or`
@@ -101,7 +107,7 @@
 - [x] Day 8 Complete — 🎉 **Exception Handlers & Middleware Mastered!**
 - [x] Day 9 Complete — 🎉 **NumPy Basics + Advanced Mastered!**
 - [x] Day 10 Complete — 🎉 **Pandas Basics Mastered!**
-- [ ] Day 11 Complete — Calling External APIs
+- [x] Day 11 Complete — 🎉 **External APIs Mastered!**
 - [ ] Day 12 Complete — OpenAI API Basics
 - [ ] Day 13 Complete — Prompt Engineering
 - [ ] Day 14 Complete — LangChain Basics
