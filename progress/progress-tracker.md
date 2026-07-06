@@ -21,7 +21,7 @@
 | Day 9 | NumPy Basics | ✅ Done | 2026-06-25 | 1D & 2D arrays, slicing, boolean indexing, math ops, aggregations, broadcasting, copy vs view, np.where, dot product |
 | Day 10 | Pandas Basics | ✅ Done | 2026-06-30 | DataFrames, CSV, head/info/describe, filtering (&/|), missing values (fillna/dropna), groupby aggregations, derived columns. Extra practice with student dataset. |
 | Day 11 | Calling External APIs | ✅ Done | 2026-07-01 | requests library — GET/POST/PUT/PATCH/DELETE, headers, auth patterns (Bearer/API key/Basic), error handling (raise_for_status, retries, timeouts), Session, .env + python-dotenv. Deep dive + Q&A. |
-| Day 12 | OpenAI API Basics | ⬜ Not Started | | First LLM integration, chat completions, system/user/assistant roles |
+| Day 12 | OpenAI API Basics (Ollama) | ✅ Done | 2026-07-06 | Used Ollama (qwen2.5-coder:7b) as free OpenAI substitute. Covered: ollama.chat(), system/user/assistant roles, multi-turn conversation, temperature, structured JSON output. Exercise: personal task assistant chatbot with while loop. |
 | Day 13 | Prompt Engineering | ⬜ Not Started | | Zero-shot, few-shot, chain-of-thought, prompt templates |
 | Day 14 | LangChain Basics | ⬜ Not Started | | ChatPromptTemplate, chains, LLM abstraction |
 | Day 15 | Mini Project: AI FastAPI Endpoint | ⬜ Not Started | | AI-powered task summariser + priority suggester in FastAPI |
@@ -44,7 +44,7 @@
 | Day 7 | Pydantic validation exercises | ✅ | Completed: Field(min_length, max_length) on title; @field_validator for status enum; @model_validator for "done requires description"; Depends() for "urgent tasks must be in-progress". Tested all scenarios in Postman. Learned validation pipeline order: Pydantic (422) → Dependencies (400/custom) → Endpoint |
 | Day 8 | Exception handlers & middleware | ✅ | Custom HTTPException/422 handlers for consistent error shape. BusinessRuleError class. Logging + X-Request-ID middleware. Full pipeline test in Postman. |
 | Day 9 | NumPy exercises (basics + advanced) | ✅ | Created exam scores array, aggregations, boolean indexing. Advanced: 2D sales matrix, axis operations, broadcasting, np.where, normalisation, dot product. |
-| Day 10 | Pandas exercises (basics + extra practice) | ✅ | Loaded CSV, filtered with &/| conditions, handled missing values with fillna/dropna, groupby aggregations, derived columns. Key fix: shape is a property (no parentheses), always wrap results in print() in .py files |
+| Day 12 | Day 12 LLM basics + exercise | ✅ | Covered ollama.chat(), system/user/assistant roles, multi-turn conversation, temperature, structured JSON output. Built task assistant chatbot exercise. Key fix: `content` not `context` as message key |
 
 ---
 
@@ -79,7 +79,13 @@
 - NumPy slice = a VIEW not a copy — changing the slice changes the original! Use `.copy()` to avoid this
 - `df.shape` is a property not a method — no parentheses (unlike `df.info()`)
 - `timeout=5` applies to both connect and read; `timeout=(3,10)` = 3s connect, 10s read — always set a timeout
-- Retry only on 5xx (server fault) — never on 4xx (client fault, retrying won't help)
+- `ollama.chat()` sends a `messages` list — always `{"role": "...", "content": "..."}` — key is `content` not `context`
+- `system` role = AI persona/rules (set once), `user` = question, `assistant` = previous AI reply (for memory)
+- LLM has NO memory — you must send full conversation history every time
+- `temperature=0.0` = deterministic, `1.0` = creative/varied
+- Include your data IN the system prompt so the AI knows about it
+- `response.message.content` = the AI's text reply
+- `- Retry only on 5xx (server fault) — never on 4xx (client fault, retrying won't help)
 - `raise_for_status()` raises HTTPError for any 4xx or 5xx response
 - Bearer token pattern: `headers={"Authorization": f"Bearer {key}"}` — used by OpenAI, Groq, GitHub
 - `requests.Session()` reuses headers and TCP connections across multiple calls — use for AI API clients
@@ -108,7 +114,7 @@
 - [x] Day 9 Complete — 🎉 **NumPy Basics + Advanced Mastered!**
 - [x] Day 10 Complete — 🎉 **Pandas Basics Mastered!**
 - [x] Day 11 Complete — 🎉 **External APIs Mastered!**
-- [ ] Day 12 Complete — OpenAI API Basics
+- [x] Day 12 Complete — 🎉 **LLM API Basics Mastered! (Ollama)**
 - [ ] Day 13 Complete — Prompt Engineering
 - [ ] Day 14 Complete — LangChain Basics
 - [ ] Day 15 Complete — Mini Project: AI-Powered FastAPI Endpoint
