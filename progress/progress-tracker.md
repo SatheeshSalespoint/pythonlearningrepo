@@ -22,7 +22,7 @@
 | Day 10 | Pandas Basics | ✅ Done | 2026-06-30 | DataFrames, CSV, head/info/describe, filtering (&/|), missing values (fillna/dropna), groupby aggregations, derived columns. Extra practice with student dataset. |
 | Day 11 | Calling External APIs | ✅ Done | 2026-07-01 | requests library — GET/POST/PUT/PATCH/DELETE, headers, auth patterns (Bearer/API key/Basic), error handling (raise_for_status, retries, timeouts), Session, .env + python-dotenv. Deep dive + Q&A. |
 | Day 12 | OpenAI API Basics (Ollama) | ✅ Done | 2026-07-06 | Used Ollama (qwen2.5-coder:7b) as free OpenAI substitute. Covered: ollama.chat(), system/user/assistant roles, multi-turn conversation, temperature, structured JSON output. Exercise: personal task assistant chatbot with while loop. |
-| Day 13 | Prompt Engineering | ⬜ Not Started | | Zero-shot, few-shot, chain-of-thought, prompt templates |
+| Day 13 | Prompt Engineering | 🔄 In Progress | 2026-07-07 | Zero-shot, few-shot, CoT, system/role prompts, dynamic templates, negative prompting (tomorrow) |
 | Day 14 | LangChain Basics | ⬜ Not Started | | ChatPromptTemplate, chains, LLM abstraction |
 | Day 15 | Mini Project: AI FastAPI Endpoint | ⬜ Not Started | | AI-powered task summariser + priority suggester in FastAPI |
 
