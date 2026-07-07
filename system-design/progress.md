@@ -1,0 +1,37 @@
+# 🏗️ System Design — Morning Learning Track
+
+**Engineer:** Senior C# Backend Developer (12+ years)  
+**Format:** 15 minutes every morning  
+**Goal:** Master system design for scalable, real-world architectures  
+**Start Date:** 2026-07-08  
+
+---
+
+## Progress Tracker
+
+| Day | Topic | Status | Date | Key Takeaway |
+|-----|-------|--------|------|--------------|
+| Day 1 | Scalability — Vertical vs Horizontal | 🔄 In Progress | 2026-07-08 | |
+| Day 2 | Load Balancers | ⬜ | | |
+| Day 3 | Caching | ⬜ | | |
+| Day 4 | Databases — SQL vs NoSQL | ⬜ | | |
+| Day 5 | CAP Theorem | ⬜ | | |
+| Day 6 | API Design — REST vs gRPC vs GraphQL | ⬜ | | |
+| Day 7 | Message Queues & Async Communication | ⬜ | | |
+| Day 8 | Rate Limiting | ⬜ | | |
+| Day 9 | CDN & Static Assets | ⬜ | | |
+| Day 10 | Database Indexing & Query Optimisation | ⬜ | | |
+| Day 11 | Microservices vs Monolith | ⬜ | | |
+| Day 12 | Service Discovery | ⬜ | | |
+| Day 13 | Circuit Breaker Pattern | ⬜ | | |
+| Day 14 | Event-Driven Architecture | ⬜ | | |
+| Day 15 | CQRS Pattern | ⬜ | | |
+| Day 16 | Event Sourcing | ⬜ | | |
+| Day 17 | Consistent Hashing | ⬜ | | |
+| Day 18 | Database Sharding | ⬜ | | |
+| Day 19 | Replication — Leader/Follower | ⬜ | | |
+| Day 20 | Designing a URL Shortener (case study) | ⬜ | | |
+
+---
+
+**Status Legend:** ⬜ Not Started &nbsp;|&nbsp; 🔄 In Progress &nbsp;|&nbsp; ✅ Done
