@@ -11,8 +11,8 @@
 
 | Day | Topic | Status | Date | Key Takeaway |
 |-----|-------|--------|------|--------------|
-| Day 1 | Scalability — Vertical vs Horizontal | 🔄 In Progress | 2026-07-08 | |
-| Day 2 | Load Balancers | ⬜ | | |
+| Day 1 | Scalability — Vertical vs Horizontal | ✅ Done | 2026-07-08 | Design stateless from day 1 — never store sessions in server memory |
+| Day 2 | Load Balancers | ✅ Done | 2026-07-09 | Health checks must verify real deps; sticky sessions = hidden single point of failure |
 | Day 3 | Caching | ⬜ | | |
 | Day 4 | Databases — SQL vs NoSQL | ⬜ | | |
 | Day 5 | CAP Theorem | ⬜ | | |
