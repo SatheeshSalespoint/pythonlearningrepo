@@ -19,7 +19,7 @@
 | Day 6 | API Design — REST vs gRPC vs GraphQL | ✅ Done | 2026-07-20 | REST for public/CDN, gRPC for internal microservices, GraphQL BFF for flexible frontends; watch N+1 with DataLoader |
 | Day 7 | Message Queues & Async Communication | ✅ Done | 2026-07-21 | Message queues trade latency for resilience; Channel\<T\> for in-process, Kafka for replay/audit, RabbitMQ/MassTransit for task dispatch; always define a DLQ strategy |
 | Day 8 | Rate Limiting | ✅ Done | 2026-07-22 | Rate limit = hard reject (429); Throttle = soft slowdown; Circuit Breaker = fail fast outbound. Always use Redis for distributed counters; design keys per tenant/user/endpoint; define a Redis failure strategy |
-| Day 9 | CDN & Static Assets | ⬜ | | |
+| Day 9 | CDN & Static Assets | ✅ Done | 2026-07-24 | CDN caches at edge nodes globally — first request is always a MISS, every request after is a HIT; use content-hashed filenames for cache busting; Cache-Control: public for static, private/no-store for user data |
 | Day 10 | Database Indexing & Query Optimisation | ⬜ | | |
 | Day 11 | Microservices vs Monolith | ⬜ | | |
 | Day 12 | Service Discovery | ⬜ | | |
