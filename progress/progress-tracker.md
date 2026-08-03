@@ -23,7 +23,7 @@
 | Day 11 | Calling External APIs | ✅ Done | 2026-07-01 | requests library — GET/POST/PUT/PATCH/DELETE, headers, auth patterns (Bearer/API key/Basic), error handling (raise_for_status, retries, timeouts), Session, .env + python-dotenv. Deep dive + Q&A. |
 | Day 12 | OpenAI API Basics (Ollama) | ✅ Done | 2026-07-06 | Used Ollama (qwen2.5-coder:7b) as free OpenAI substitute. Covered: ollama.chat(), system/user/assistant roles, multi-turn conversation, temperature, structured JSON output. Exercise: personal task assistant chatbot with while loop. |
 | Day 13 | Prompt Engineering | ✅ Done | 2026-07-08 | Zero-shot, few-shot, CoT, role/system, dynamic template, negative prompting, contextual prompting, parse_json() helper, stretch exercise |
-| Day 14 | LangChain Basics | ✅ Done | 2026-08-03 | ChatPromptTemplate, ChatOllama, Chain (\|), StrOutputParser, multi-variable templates, 3-chain task analyser exercise |
+| Day 14 | LangChain Basics | ⬜ Not Started | | ChatPromptTemplate, chains, LLM abstraction |
 | Day 15 | Mini Project: AI FastAPI Endpoint | ⬜ Not Started | | AI-powered task summariser + priority suggester in FastAPI |
 
 **Status Legend:**  
@@ -98,13 +98,6 @@
 - `groupby("col")["other_col"].mean()` — always specify which column to aggregate after groupby
 - `axis=0` collapses DOWN rows (result per column), `axis=1` collapses ACROSS columns (result per row)
 - NumPy arrays print without commas — that's normal, not a bug
-- LangChain `chain = prompt | llm | parser` — the `|` (pipe) operator chains steps like LINQ in C#
-- `ChatPromptTemplate.from_messages()` takes `("role", "content")` tuples — use `{placeholder}` for variables
-- `.invoke({"key": "value"})` fills in template placeholders and runs the full chain
-- `StrOutputParser()` extracts the plain text string from the AI response object — always add it at the end
-- `ChatOllama` = LangChain wrapper for your local Ollama model — same model name as in `ollama.chat()`
-- Define chains once, reuse with different `.invoke()` inputs — like a C# method you call many times
-- `prompt.format_messages(key=value)` lets you inspect the formatted prompt before sending — useful for debugging
 
 ---
 
@@ -123,5 +116,5 @@
 - [x] Day 11 Complete — 🎉 **External APIs Mastered!**
 - [x] Day 12 Complete — 🎉 **LLM API Basics Mastered! (Ollama)**
 - [x] Day 13 Complete — 🎉 **Prompt Engineering Mastered!**
-- [x] Day 14 Complete — LangChain Basics
+- [ ] Day 14 Complete — LangChain Basics
 - [ ] Day 15 Complete — Mini Project: AI-Powered FastAPI Endpoint
