@@ -25,7 +25,7 @@
 | Day 12 | Service Discovery | ✅ Done | 2026-07-30 | Service registry = phone book for microservices; K8s DNS+Services is built-in discovery; always back registry with real health checks |
 | Day 13 | Circuit Breaker Pattern | ✅ Done | 2026-07-31 | CB = fail fast in 3 states (Closed→Open→Half-Open); combines with Retry (transient) + Fallback (degradation); never retry when circuit is open — use Polly in .NET |
 | Day 14 | Event-Driven Architecture | ✅ Done | 2026-08-03 | Producers emit past-tense facts; consumers must be idempotent; partition by entity ID for ordering; keep payment charges synchronous — publish events only after critical action succeeds |
-| Day 15 | CQRS Pattern | ⬜ | | |
+| Day 15 | CQRS Pattern | ✅ Done | 2026-08-04 | Commands return only server-generated data (usually just the ID); queries can use joins — CQRS forbids domain logic in queries, not SQL joins; scale read side with replicas not over-engineering |
 | Day 16 | Event Sourcing | ⬜ | | |
 | Day 17 | Consistent Hashing | ⬜ | | |
 | Day 18 | Database Sharding | ⬜ | | |
