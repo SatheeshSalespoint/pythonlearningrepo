@@ -27,7 +27,7 @@
 | Day 14 | Event-Driven Architecture | ✅ Done | 2026-08-03 | Producers emit past-tense facts; consumers must be idempotent; partition by entity ID for ordering; keep payment charges synchronous — publish events only after critical action succeeds |
 | Day 15 | CQRS Pattern | ✅ Done | 2026-08-04 | Commands return only server-generated data (usually just the ID); queries can use joins — CQRS forbids domain logic in queries, not SQL joins; scale read side with replicas not over-engineering |
 | Day 16 | Event Sourcing | ✅ Done | 2026-08-06 | Event store = append-only facts per aggregate; use aggregate_type not separate tables; build projections for reports, snapshots for replay performance, archive for cost — never query event store directly for reporting |
-| Day 17 | Consistent Hashing | ⬜ | | |
+| Day 17 | Consistent Hashing | ✅ Done | 2026-08-07 | Consistent hashing rehashes only ~1/N of keys when scaling (vs 67% with simple hashing); use for cache/queue/DB routing; sub-partition skewed tenants to prevent hot spots |
 | Day 18 | Database Sharding | ⬜ | | |
 | Day 19 | Replication — Leader/Follower | ⬜ | | |
 | Day 20 | Designing a URL Shortener (case study) | ⬜ | | |
