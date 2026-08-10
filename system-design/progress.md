@@ -29,7 +29,7 @@
 | Day 16 | Event Sourcing | ✅ Done | 2026-08-06 | Event store = append-only facts per aggregate; use aggregate_type not separate tables; build projections for reports, snapshots for replay performance, archive for cost — never query event store directly for reporting |
 | Day 17 | Consistent Hashing | ✅ Done | 2026-08-07 | Consistent hashing rehashes only ~1/N of keys when scaling (vs 67% with simple hashing); use for cache/queue/DB routing; sub-partition skewed tenants to prevent hot spots |
 | Day 18 | Database Sharding | ✅ Done | 2026-08-10 | Shard key selection (high cardinality, immutable, evenly distributed); data skew ≠ traffic skew; tradeoffs: joins slow, distributed transactions risky, hot shards possible; use consistent hashing for rebalancing; fix data skew with sub-sharding, traffic skew with caching/replicas |
-| Day 19 | Replication — Leader/Follower | ⬜ | | |
+| Day 19 | Replication — Leader/Follower | ✅ Done | 2026-08-11 | Leader accepts writes, Followers scale reads; replication lag (100ms-1s) causes stale reads; route sensitive data to Leader (strong consistency), non-sensitive to Followers (eventual consistency); sync for payments, async for speed; failover promotes most-caught-up Follower (~30-60s downtime) |
 | Day 20 | Designing a URL Shortener (case study) | ⬜ | | |
 
 ---
