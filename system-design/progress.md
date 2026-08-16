@@ -32,6 +32,28 @@
 | Day 19 | Replication — Leader/Follower | ✅ Done | 2026-08-11 | Leader accepts writes, Followers scale reads; replication lag (100ms-1s) causes stale reads; route sensitive data to Leader (strong consistency), non-sensitive to Followers (eventual consistency); sync for payments, async for speed; failover promotes most-caught-up Follower (~30-60s downtime) |
 | Day 20 | Designing a URL Shortener (case study) | ✅ Done | 2026-08-12 | Shard by short_url (reads > writes); user_id + sequence for collision-free generation; Redis cache + read replicas for scale; separate analytics DB for secondary queries; cache lock prevents stampede on viral URLs |
 | Day 21 | Authentication System Design (Real App) | ✅ Done | 2026-08-13 | Multi-tenant SaaS+Fintech auth: JWT + refresh tokens; regional Redis sharding (NZ/AUS); IP+user rate limiting; audit logging (Seq+CosmosDB); 5-min Redis failure fallback; security-first design for fintech compliance |
+| Day 22 | URL Shortener Variants | 🔄 In Progress | 2026-08-14 | — |
+
+---
+
+## Learning Strategy & Checkpoints
+
+**Commitment:** Daily system design practice (30+ days minimum)
+
+**Approach:** 
+- Days 22-35: Complete Phase 1 (EASY) + Phase 2 (MEDIUM)
+- End of Day 35: Assessment checkpoint
+- Decision point: Ready for Phase 3 (HARD systems)?
+  - If YES → Proceed with hard systems (Days 36-45)
+  - If NO → Adjust plan (add question-building, slow down, etc.)
+
+**Assessment Criteria (End of Day 35):**
+✓ Can estimate scale correctly (traffic, storage, QPS)  
+✓ Identify bottlenecks immediately  
+✓ Ask good architectural questions (not just answer them)  
+✓ Understand consistency/availability tradeoffs deeply  
+✓ Handle multiple constraints simultaneously  
+✓ Ready for real-time systems + strong consistency  
 
 ---
 
