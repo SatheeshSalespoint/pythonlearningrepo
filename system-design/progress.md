@@ -35,4 +35,37 @@
 
 ---
 
+## Learning Roadmap (Days 22-30+)
+
+### Planned Case Studies (Next 5 Days)
+
+| Day | Topic | Focus Areas | Scale | Key Concepts |
+|-----|-------|------------|-------|--------------|
+| Day 22 | Twitter/Social Media Feed | Caching, denormalization, eventual consistency | 500M DAU | CQRS, fanout-on-write, timeline consistency |
+| Day 23 | Uber (Ride Sharing) | Geolocation, real-time matching, strong consistency | 1M concurrent rides | Consistent hashing, real-time updates, bookings |
+| Day 24 | YouTube (Video Streaming) | Storage, CDN, transcoding, caching | 1B DAU, 500 hrs/min uploaded | Object storage, CDN, message queues, async jobs |
+| Day 25 | Stripe (Payment System) | Strong consistency, reliability, compliance | 100k+ transactions/sec | Distributed transactions, idempotency, audit logs |
+| Day 25+ | Discord (Real-time Messaging) | Real-time communication, ordering, reliability | 10M concurrent users | Message queues, event sourcing, consistency |
+
+### Future Expansion (Days 26+)
+
+**Other Systems to Design (Optional):**
+- Netflix Recommendation Engine (ML + caching)
+- Amazon S3 (Object storage at scale)
+- Google Maps (Geolocation + real-time)
+- Slack (Workspace platform)
+- GitHub (Code collaboration)
+- AWS Lambda (Serverless architecture)
+- Kafka (Event streaming platform)
+
+**Your Real App Systems (To Design):**
+- Reporting System (you mentioned reports hang)
+- Data Pipeline (ETL/analytics)
+- User Onboarding Flow
+- Payment Processing (fintech)
+- Notification System
+- Search/Autocomplete
+
+---
+
 **Status Legend:** ⬜ Not Started &nbsp;|&nbsp; 🔄 In Progress &nbsp;|&nbsp; ✅ Done
