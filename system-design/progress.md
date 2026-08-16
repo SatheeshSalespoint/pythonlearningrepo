@@ -35,36 +35,147 @@
 
 ---
 
-## Learning Roadmap (Days 22-30+)
+## 60+ Day Learning Roadmap (Comprehensive Daily Practice)
 
-### Planned Case Studies (Next 5 Days)
+### Phase 1: EASY (Days 22-27) — 15-20 mins each
+**Goal:** Build confidence with cache + basic scaling patterns
 
-| Day | Topic | Focus Areas | Scale | Key Concepts |
-|-----|-------|------------|-------|--------------|
-| Day 22 | Twitter/Social Media Feed | Caching, denormalization, eventual consistency | 500M DAU | CQRS, fanout-on-write, timeline consistency |
-| Day 23 | Uber (Ride Sharing) | Geolocation, real-time matching, strong consistency | 1M concurrent rides | Consistent hashing, real-time updates, bookings |
-| Day 24 | YouTube (Video Streaming) | Storage, CDN, transcoding, caching | 1B DAU, 500 hrs/min uploaded | Object storage, CDN, message queues, async jobs |
-| Day 25 | Stripe (Payment System) | Strong consistency, reliability, compliance | 100k+ transactions/sec | Distributed transactions, idempotency, audit logs |
-| Day 25+ | Discord (Real-time Messaging) | Real-time communication, ordering, reliability | 10M concurrent users | Message queues, event sourcing, consistency |
+| Day | System | Complexity | Focus | Approx Time |
+|-----|--------|-----------|-------|------------|
+| Day 22 | **URL Shortener Variants** (TinyURL vs Bit.ly patterns) | Easy | Query optimization, different sharding strategies | 15 min |
+| Day 23 | **Instagram Feed** (simpler than Twitter) | Easy | Basic caching, timeline ordering | 20 min |
+| Day 24 | **Google Search Autocomplete** | Easy | Trie data structure, prefix matching, caching | 20 min |
+| Day 25 | **Rate Limiting Service** | Easy | Token bucket, sliding window, distributed counters | 15 min |
+| Day 26 | **Cache Invalidation System** | Easy | TTL strategies, cache warming, consistency | 20 min |
+| Day 27 | **Metrics/Monitoring System** | Easy | Time-series DB, aggregation, alerts | 20 min |
 
-### Future Expansion (Days 26+)
+### Phase 2: MEDIUM (Days 28-35) — 30-45 mins each
+**Goal:** Handle tradeoffs, consistency models, distributed systems
 
-**Other Systems to Design (Optional):**
-- Netflix Recommendation Engine (ML + caching)
-- Amazon S3 (Object storage at scale)
-- Google Maps (Geolocation + real-time)
-- Slack (Workspace platform)
-- GitHub (Code collaboration)
-- AWS Lambda (Serverless architecture)
-- Kafka (Event streaming platform)
+| Day | System | Complexity | Focus | Approx Time |
+|-----|--------|-----------|-------|------------|
+| Day 28 | **Twitter/Social Media Feed** | Medium | Fanout-on-write, denormalization, eventual consistency | 45 min |
+| Day 29 | **Messaging Queue (RabbitMQ style)** | Medium | Producer-consumer, ordering, reliability | 40 min |
+| Day 30 | **Notification System** | Medium | Reliability, fan-out, deduplication | 35 min |
+| Day 31 | **Key-Value Store (Redis style)** | Medium | Eviction policies, persistence, pub/sub | 40 min |
+| Day 32 | **Session Store** (similar to auth but simpler) | Medium | Distributed sessions, expiration, cleanup | 30 min |
+| Day 33 | **Search Engine (basic)** | Medium | Indexing, ranking, inverted index | 45 min |
+| Day 34 | **Leaderboard/Rankings System** | Medium | Sorted sets, real-time updates, scalability | 35 min |
+| Day 35 | **Recommendation Engine (basic)** | Medium | Collaborative filtering, caching, batch jobs | 40 min |
 
-**Your Real App Systems (To Design):**
-- Reporting System (you mentioned reports hang)
-- Data Pipeline (ETL/analytics)
-- User Onboarding Flow
-- Payment Processing (fintech)
-- Notification System
-- Search/Autocomplete
+### Phase 3: HARD (Days 36-45) — 45-60 mins each
+**Goal:** Master complex tradeoffs, real-time systems, strong consistency
+
+| Day | System | Complexity | Focus | Approx Time |
+|-----|--------|-----------|-------|------------|
+| Day 36 | **Uber (Ride Sharing)** | Hard | Geolocation, real-time matching, strong consistency | 60 min |
+| Day 37 | **YouTube (Video Streaming)** | Hard | Storage, CDN, transcoding, distributed encoding | 60 min |
+| Day 38 | **Google Maps** | Hard | Geospatial indexing, routing, real-time traffic | 55 min |
+| Day 39 | **Slack (Workspace Platform)** | Hard | Real-time messaging, presence, search | 60 min |
+| Day 40 | **Stripe (Payment System)** | Hard | Strong consistency, reliability, compliance, idempotency | 60 min |
+| Day 41 | **Discord (Real-time Chat)** | Hard | Message ordering, consistency, reliability, presence | 60 min |
+| Day 42 | **Netflix (Video Service)** | Hard | Recommendation, streaming, CDN, global distribution | 60 min |
+| Day 43 | **Amazon S3 (Object Storage)** | Hard | Distributed storage, replication, consistency | 55 min |
+| Day 44 | **GitHub (Code Collaboration)** | Hard | Version control, branching, conflict resolution | 60 min |
+| Day 45 | **Kafka (Event Streaming)** | Hard | Partitioning, ordering, replication, fault tolerance | 60 min |
+
+### Phase 4: VERY HARD (Days 46-55) — 60+ mins each
+**Goal:** Design complex, multi-faceted distributed systems
+
+| Day | System | Complexity | Focus | Approx Time |
+|-----|--------|-----------|-------|------------|
+| Day 46 | **Google Drive (Cloud Storage + Sync)** | Very Hard | Sync protocols, conflict resolution, eventual consistency | 70 min |
+| Day 47 | **Airbnb (Marketplace)** | Very Hard | Search, inventory, transactions, trust, payments | 75 min |
+| Day 48 | **DynamoDB (NoSQL Database)** | Very Hard | Distributed hash table, replication, auto-scaling | 70 min |
+| Day 49 | **Cassandra (Distributed DB)** | Very Hard | Ring topology, eventual consistency, read repair | 75 min |
+| Day 50 | **Facebook (Social Network)** | Very Hard | Graph DB, privacy, real-time notifications | 75 min |
+| Day 51 | **LinkedIn (Connections + Feed)** | Very Hard | Graph algorithms, feed ranking, job recommendations | 70 min |
+| Day 52 | **Evernote (Note Taking + Sync)** | Very Hard | Rich content, encryption, offline-first, sync | 70 min |
+| Day 53 | **Dropbox (File Sync Service)** | Very Hard | Delta sync, versioning, conflict resolution | 75 min |
+| Day 54 | **Docker Registry (Container Storage)** | Very Hard | Distributed image storage, layering, replication | 70 min |
+| Day 55 | **AWS Lambda (Serverless)** | Very Hard | Scheduling, scaling, cold starts, isolation | 75 min |
+
+### Phase 5: YOUR REAL APP (Days 56-65) — Custom duration
+**Goal:** Design critical systems for your SaaS+Fintech platform
+
+| Day | System | Your Pain Point | Focus | Approx Time |
+|-----|--------|------------------|-------|------------|
+| Day 56 | **Reporting System** | Reports hanging | Async processing, materialized views, caching | 45 min |
+| Day 57 | **Data Pipeline (ETL)** | Real-time analytics | Streaming, batching, incremental updates | 50 min |
+| Day 58 | **User Onboarding Flow** | Conversion optimization | Multi-step, validation, emails, notifications | 40 min |
+| Day 59 | **Payment Processing** | Fintech core | Transactions, retries, idempotency, audit | 60 min |
+| Day 60 | **Search/Autocomplete** | User experience | Indexing, ranking, real-time suggestions | 45 min |
+| Day 61 | **Audit Logging (Enhanced)** | Compliance | Tamper-proof logs, compliance reporting | 40 min |
+| Day 62 | **Analytics Dashboard** | Business intelligence | Real-time metrics, aggregations, visualizations | 50 min |
+| Day 63 | **Multi-region Replication** | Global expansion | Data consistency, conflict resolution | 55 min |
+| Day 64 | **Disaster Recovery System** | Business continuity | Backup, restore, failover, testing | 50 min |
+| Day 65 | **Migration from Legacy** | Technical debt | .NET Framework → .NET 8, session → JWT | 60 min |
+
+### Phase 6: ADVANCED TOPICS (Days 66+) — Optional deep dives
+**Goal:** Specialize in specific areas
+
+**Distributed Systems Theory:**
+- CAP Theorem deep dive
+- ACID vs BASE
+- Consensus algorithms (Raft, Paxos)
+- Byzantine fault tolerance
+
+**Performance Optimization:**
+- Query optimization techniques
+- Index strategies
+- Caching patterns (LRU, LFU, TTL)
+- Bloom filters & sketches
+
+**Data Structures at Scale:**
+- B-trees & LSM trees
+- Merkle trees
+- Tries & suffix trees
+- Skip lists
+
+**Security & Compliance:**
+- End-to-end encryption
+- Key management
+- Zero-knowledge proofs
+- GDPR/compliance patterns
+
+---
+
+## Practice Guidelines
+
+### Daily Routine (Suggested)
+```
+Monday-Friday: ~30-45 mins
+  • Pick system from roadmap
+  • Apply 5-question framework
+  • Design on paper or whiteboard
+  • Document key decisions
+  
+Weekend: Review + Deeper dive (optional)
+  • Pick one system from week
+  • Implement part of it (code)
+  • Read real-world case studies
+```
+
+### Success Metrics
+```
+✓ Can estimate scale correctly
+✓ Ask good architectural questions
+✓ Identify bottlenecks immediately
+✓ Propose multiple solutions + tradeoffs
+✓ Explain why you chose your approach
+✓ Handle failure scenarios
+✓ Think about costs + operational concerns
+```
+
+### Progression
+```
+Week 1-2 (Days 22-27): Build confidence with easy systems
+Week 3-4 (Days 28-35): Medium systems, start asking own questions
+Week 5-7 (Days 36-45): Hard systems, deep tradeoff analysis
+Week 8-10 (Days 46-55): Very hard systems, multi-dimensional thinking
+Week 11-13 (Days 56-65): Your real app systems, practical application
+Week 14+: Advanced topics or specialized deep dives
+```
 
 ---
 
