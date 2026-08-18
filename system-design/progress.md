@@ -33,6 +33,7 @@
 | Day 20 | Designing a URL Shortener (case study) | ✅ Done | 2026-08-12 | Shard by short_url (reads > writes); user_id + sequence for collision-free generation; Redis cache + read replicas for scale; separate analytics DB for secondary queries; cache lock prevents stampede on viral URLs |
 | Day 21 | Authentication System Design (Real App) | ✅ Done | 2026-08-13 | Multi-tenant SaaS+Fintech auth: JWT + refresh tokens; regional Redis sharding (NZ/AUS); IP+user rate limiting; audit logging (Seq+CosmosDB); 5-min Redis failure fallback; security-first design for fintech compliance |
 | Day 22 | Analytics-Heavy URL Shortener | ✅ Done | 2026-08-14 | Daily batch aggregation (not hourly); time-based partitioning (monthly rotation); eventual consistency (24-hour delay acceptable); index strategy (link_id, date); no bottleneck with proper design; confidence 6/10 |
+| Day 23 | Instagram Feed (Social Media Timeline) | ✅ Done | 2026-08-15 | Hybrid fanout (write for <100K followers, read for celebs); Redis + SQL hybrid storage; differential consistency (strong for creator, eventual for followers); no bottleneck with proper caching; confidence 8-9/10 |
 
 ---
 
