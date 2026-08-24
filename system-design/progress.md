@@ -35,7 +35,8 @@
 | Day 22 | Analytics-Heavy URL Shortener | ✅ Done | 2026-08-14 | Daily batch aggregation (not hourly); time-based partitioning (monthly rotation); eventual consistency (24-hour delay acceptable); index strategy (link_id, date); no bottleneck with proper design; confidence 6/10 |
 | Day 23 | Instagram Feed (Social Media Timeline) | ✅ Done | 2026-08-15 | Hybrid fanout (write for <100K followers, read for celebs); Redis + SQL hybrid storage; differential consistency (strong for creator, eventual for followers); no bottleneck with proper caching; confidence 8-9/10 |
 | Day 24 | Google Search Autocomplete | ✅ Done | 2026-08-19 | Trie data structure for prefix matching; balanced ranking (long-term × 1.0 + short-term × 1.0); hybrid 3-tier storage (Trie 1M hot + Redis warm + DB cold); reserved capacity 900K+100K tiers; daily batch promotion logic; confidence 9-10/10 |
-| Day 25 | Rate Limiting Service | 🔄 In Progress | 2026-08-20 | Regional sharding (NZ/AUS split); tenant-based consistent hashing; sub-sharding for hot tenants (>1K req/sec); primary-only consistency (no replica reads); TTL-based memory management; confidence 7/10 |
+| Day 25 | Rate Limiting Service | ✅ Done | 2026-08-20 | Regional sharding (NZ/AUS split); tenant-based consistent hashing; sub-sharding for hot tenants (>1K req/sec); primary-only consistency (no replica reads); TTL-based memory management; confidence 7/10 |
+| Day 26 | Cache Invalidation System | ✅ Done | 2026-08-21 | Staleness tolerance per data type (transaction 1s, balance 5s, history 5s); hybrid invalidation (event + TTL); scoped events (not broadcast); outbox pattern for guaranteed delivery; confidence 8/10 |
 
 ---
 
