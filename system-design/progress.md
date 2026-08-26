@@ -38,6 +38,7 @@
 | Day 25 | Rate Limiting Service | ✅ Done | 2026-08-20 | Regional sharding (NZ/AUS split); tenant-based consistent hashing; sub-sharding for hot tenants (>1K req/sec); primary-only consistency (no replica reads); TTL-based memory management; confidence 7/10 |
 | Day 26 | Cache Invalidation System | ✅ Done | 2026-08-21 | Staleness tolerance per data type (transaction 1s, balance 5s, history 5s); hybrid invalidation (event + TTL); scoped events (not broadcast); outbox pattern for guaranteed delivery; confidence 8/10 |
 | Day 27 | Metrics & Monitoring System | ✅ Done | 2026-08-26 | Cardinality explosion bottleneck; three-tier sampling (100%/10%/1%); low-cardinality labels (endpoint, status, region only); Prometheus real-time + Data Warehouse historical; confidence 8/10 |
+| Day 28 | Twitter/Social Media Feed | ✅ Done | 2026-08-26 | Pull-on-demand architecture; fanout bottleneck solved; hybrid regional replication (5min posts, 1hr likes); engagement aggregation strategy; confidence 8/10 |
 
 ---
 
