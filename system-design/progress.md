@@ -57,6 +57,11 @@
   - If YES → Proceed with hard systems (Days 36-45)
   - If NO → Adjust plan (add question-building, slow down, etc.)
 
+**Learning Format Going Forward:**
+- **Design-only days** (Days 33-35): Create `.md` file with bottleneck analysis, decisions, tradeoffs. Quick, no communication coaching.
+- **Coaching days** (occasional): Full bottleneck-first questioning, interview practice, communication feedback.
+- **Implementation days** (future): Code the system design with tests.
+
 **Assessment Criteria (End of Day 35):**
 ✓ Can estimate scale correctly (traffic, storage, QPS)  
 ✓ Identify bottlenecks immediately  
@@ -89,11 +94,11 @@
 | Day 28 | **Twitter/Social Media Feed** | Medium | Fanout-on-write, denormalization, eventual consistency | 45 min |
 | Day 29 | **Messaging Queue (RabbitMQ style)** | Medium | Producer-consumer, ordering, reliability | 40 min |
 | Day 30 | **Notification System** | Medium | Reliability, fan-out, deduplication | 35 min |
-| Day 31 | **Key-Value Store (Redis style)** | Medium | Eviction policies, persistence, pub/sub | 40 min |
-| Day 32 | **Session Store** (similar to auth but simpler) | Medium | Distributed sessions, expiration, cleanup | 30 min |
-| Day 33 | **Search Engine (basic)** | Medium | Indexing, ranking, inverted index | 45 min |
+| Day 31 | **Notification System Refined** | Medium | Idempotency, priority batching, regional failover, DR | 50 min |
+| Day 32 | **Redis-Style KV Store** | Medium | RDB + AOF persistence, LFU eviction, critical data protection | 40 min |
+| Day 33 | **Search Engine (basic)** | Medium | Indexing, ranking, inverted index, distributed search | 45 min |
 | Day 34 | **Leaderboard/Rankings System** | Medium | Sorted sets, real-time updates, scalability | 35 min |
-| Day 35 | **Recommendation Engine (basic)** | Medium | Collaborative filtering, caching, batch jobs | 40 min |
+| Day 35 | **Checkpoint Assessment Day** | N/A | Review Days 22-34, assess readiness for Phase 3 (Hard) | 60 min |
 
 ### Phase 3: HARD (Days 36-45) — 45-60 mins each
 **Goal:** Master complex tradeoffs, real-time systems, strong consistency
