@@ -44,6 +44,7 @@
 | Day 31 | Notification System Refined | ✅ Done | 2026-09-01 | Idempotency hybrid (Redis+DB); priority-based batching (Rank1→3, 10 msg/batch); regional failover (health check + circuit breaker); database disaster recovery (3-layer backup); index optimization (left-prefix rule); confidence 9/10 |
 | Day 32 | Redis-Style KV Store | ✅ Done | 2026-09-02 | RDB + AOF persistence (fast recovery + zero loss); LFU eviction with critical data protection; tiered DB sync (1-min critical, 5-min non-critical); bottleneck-first architecture; confidence 8.5/10 |
 | Day 33 | Search Engine (Basic) | 🔄 In Progress | 2026-09-03 | Inverted index (word → doc list, intersect for query); autocomplete ≠ search engine (trie vs inverted index); doc length belongs in ranking not indexing; scale corrected 100M records / 50GB index / ~1.4K peak QPS; **resume: Q2 constraint, Q3 freshness, Q4 tenant isolation, ranking, sharding**; confidence 5/10 |
+| Day 34 | Leaderboard / Rankings System | ✅ Done | 2026-09-04 | Sorted sets maintain order on WRITE so reads just navigate; skip list + hash dual structure, spans make ZREVRANK O(log N) not O(1); ~100 bytes/member, listpack under 128; dimension explosion 100K × 4 windows × 3 metrics = 1.2M boards ≈ 24GB; **WRITE-heavy 11:1 — inverts Days 20-33, caching useless here**; 5% vs 20% txn assumption flipped the architecture verdict; challenge unsourced numbers, measure with redis-benchmark; confidence 8/10 |
 
 ---
 
