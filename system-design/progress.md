@@ -45,6 +45,7 @@
 | Day 32 | Redis-Style KV Store | ✅ Done | 2026-09-02 | RDB + AOF persistence (fast recovery + zero loss); LFU eviction with critical data protection; tiered DB sync (1-min critical, 5-min non-critical); bottleneck-first architecture; confidence 8.5/10 |
 | Day 33 | Search Engine (Basic) | 🔄 In Progress | 2026-09-03 | Inverted index (word → doc list, intersect for query); autocomplete ≠ search engine (trie vs inverted index); doc length belongs in ranking not indexing; scale corrected 100M records / 50GB index / ~1.4K peak QPS; **resume: Q2 constraint, Q3 freshness, Q4 tenant isolation, ranking, sharding**; confidence 5/10 |
 | Day 34 | Leaderboard / Rankings System | ✅ Done | 2026-09-04 | Sorted sets maintain order on WRITE so reads just navigate; skip list + hash dual structure, spans make ZREVRANK O(log N) not O(1); ~100 bytes/member, listpack under 128; dimension explosion 100K × 4 windows × 3 metrics = 1.2M boards ≈ 24GB; **WRITE-heavy 11:1 — inverts Days 20-33, caching useless here**; 5% vs 20% txn assumption flipped the architecture verdict; challenge unsourced numbers, measure with redis-benchmark; confidence 8/10 |
+| Day 35 | **Checkpoint Assessment (Days 22-34)** | ✅ Done | 2026-09-08 | **Score 6.0/10 — NOT ready for Phase 3.** Passed: scale estimation (7.5). Partial: bottleneck ID (6.5), asking questions (7.0). **Failed: consistency tradeoffs (5.0) — conflated consistency with availability, proposed multi-leader as a consistency fix, stated no costs; multi-constraint (4.0) — handled serially not simultaneously.** Key gaps: consistency is a property of the reader↔write relationship, not of tables (read-your-own-writes vs monotonic reads); per-key reads-per-write decides precompute (>1) vs compute-on-read; batch-job bottleneck is the critical path + recovery story, not QPS; SLA is cheap because recency is 3.5% of retention. **Pattern: strong at quantifying what is given, weak at interrogating it.** Bridge phase Days 36-40 before Phase 3 reopens Day 41 |
 
 ---
 
@@ -100,57 +101,73 @@
 | Day 32 | **Redis-Style KV Store** | Medium | RDB + AOF persistence, LFU eviction, critical data protection | 40 min |
 | Day 33 | **Search Engine (basic)** | Medium | Indexing, ranking, inverted index, distributed search | 45 min |
 | Day 34 | **Leaderboard/Rankings System** | Medium | Sorted sets, real-time updates, scalability | 35 min |
-| Day 35 | **Checkpoint Assessment Day** | N/A | Review Days 22-34, assess readiness for Phase 3 (Hard) | 60 min |
+| Day 35 | **Checkpoint Assessment Day** | N/A | ✅ DONE 2026-09-08 — scored 6.0/10, NOT ready for Phase 3 | 75 min |
 
-### Phase 3: HARD (Days 36-45) — 45-60 mins each
+### Phase 2.5: BRIDGE (Days 36-40) — Added after the Day 35 checkpoint
+**Goal:** Close the two failed criteria (consistency depth, multi-constraint reasoning) before Hard systems
+
+| Day | System/Topic | Difficulty | Focus | Time |
+|-----|--------------|------------|-------|------|
+| Day 36 | **Consistency Models (mechanism-first)** | Medium | Read-your-own-writes, monotonic reads, causal, linearizable — worked examples before design questions | 45 min |
+| Day 37 | **Search Engine — finish Day 33** | Medium | Ranking, sharding, freshness, tenant isolation | 45 min |
+| Day 38 | **Consistency re-test** | Medium | Re-run Round 3 cold + 2 new scenarios. Gate: ≥8/10 | 40 min |
+| Day 39 | **Multi-constraint drill** | Hard | 3 scenarios with conflicting constraints. Name the pair, price the relaxation. Gate: ≥7/10 | 50 min |
+| Day 40 | **Round 6 + full re-assessment** | Hard | Real-time/strong consistency round, then re-score all 6 criteria | 60 min |
+
+**Phase 3 gate:** consistency ≥ 8/10 AND multi-constraint ≥ 7/10 on Day 40.
+
+**Standing drill from Day 36 onward** — before designing anything, ask:
+*"What in this brief am I taking as given that I should be challenging?"*
+
+### Phase 3: HARD (Days 41-50) — 45-60 mins each
 **Goal:** Master complex tradeoffs, real-time systems, strong consistency
 
 | Day | System | Complexity | Focus | Approx Time |
 |-----|--------|-----------|-------|------------|
-| Day 36 | **Uber (Ride Sharing)** | Hard | Geolocation, real-time matching, strong consistency | 60 min |
-| Day 37 | **YouTube (Video Streaming)** | Hard | Storage, CDN, transcoding, distributed encoding | 60 min |
-| Day 38 | **Google Maps** | Hard | Geospatial indexing, routing, real-time traffic | 55 min |
-| Day 39 | **Slack (Workspace Platform)** | Hard | Real-time messaging, presence, search | 60 min |
-| Day 40 | **Stripe (Payment System)** | Hard | Strong consistency, reliability, compliance, idempotency | 60 min |
-| Day 41 | **Discord (Real-time Chat)** | Hard | Message ordering, consistency, reliability, presence | 60 min |
-| Day 42 | **Netflix (Video Service)** | Hard | Recommendation, streaming, CDN, global distribution | 60 min |
-| Day 43 | **Amazon S3 (Object Storage)** | Hard | Distributed storage, replication, consistency | 55 min |
-| Day 44 | **GitHub (Code Collaboration)** | Hard | Version control, branching, conflict resolution | 60 min |
-| Day 45 | **Kafka (Event Streaming)** | Hard | Partitioning, ordering, replication, fault tolerance | 60 min |
+| Day 41 | **Uber (Ride Sharing)** | Hard | Geolocation, real-time matching, strong consistency | 60 min |
+| Day 42 | **YouTube (Video Streaming)** | Hard | Storage, CDN, transcoding, distributed encoding | 60 min |
+| Day 43 | **Google Maps** | Hard | Geospatial indexing, routing, real-time traffic | 55 min |
+| Day 44 | **Slack (Workspace Platform)** | Hard | Real-time messaging, presence, search | 60 min |
+| Day 45 | **Stripe (Payment System)** | Hard | Strong consistency, reliability, compliance, idempotency | 60 min |
+| Day 46 | **Discord (Real-time Chat)** | Hard | Message ordering, consistency, reliability, presence | 60 min |
+| Day 47 | **Netflix (Video Service)** | Hard | Recommendation, streaming, CDN, global distribution | 60 min |
+| Day 48 | **Amazon S3 (Object Storage)** | Hard | Distributed storage, replication, consistency | 55 min |
+| Day 49 | **GitHub (Code Collaboration)** | Hard | Version control, branching, conflict resolution | 60 min |
+| Day 50 | **Kafka (Event Streaming)** | Hard | Partitioning, ordering, replication, fault tolerance | 60 min |
 
-### Phase 4: VERY HARD (Days 46-55) — 60+ mins each
+### Phase 4: VERY HARD (Days 51-60) — 60+ mins each
 **Goal:** Design complex, multi-faceted distributed systems
 
 | Day | System | Complexity | Focus | Approx Time |
 |-----|--------|-----------|-------|------------|
-| Day 46 | **Google Drive (Cloud Storage + Sync)** | Very Hard | Sync protocols, conflict resolution, eventual consistency | 70 min |
-| Day 47 | **Airbnb (Marketplace)** | Very Hard | Search, inventory, transactions, trust, payments | 75 min |
-| Day 48 | **DynamoDB (NoSQL Database)** | Very Hard | Distributed hash table, replication, auto-scaling | 70 min |
-| Day 49 | **Cassandra (Distributed DB)** | Very Hard | Ring topology, eventual consistency, read repair | 75 min |
-| Day 50 | **Facebook (Social Network)** | Very Hard | Graph DB, privacy, real-time notifications | 75 min |
-| Day 51 | **LinkedIn (Connections + Feed)** | Very Hard | Graph algorithms, feed ranking, job recommendations | 70 min |
-| Day 52 | **Evernote (Note Taking + Sync)** | Very Hard | Rich content, encryption, offline-first, sync | 70 min |
-| Day 53 | **Dropbox (File Sync Service)** | Very Hard | Delta sync, versioning, conflict resolution | 75 min |
-| Day 54 | **Docker Registry (Container Storage)** | Very Hard | Distributed image storage, layering, replication | 70 min |
-| Day 55 | **AWS Lambda (Serverless)** | Very Hard | Scheduling, scaling, cold starts, isolation | 75 min |
+| Day 51 | **Google Drive (Cloud Storage + Sync)** | Very Hard | Sync protocols, conflict resolution, eventual consistency | 70 min |
+| Day 52 | **Airbnb (Marketplace)** | Very Hard | Search, inventory, transactions, trust, payments | 75 min |
+| Day 53 | **DynamoDB (NoSQL Database)** | Very Hard | Distributed hash table, replication, auto-scaling | 70 min |
+| Day 54 | **Cassandra (Distributed DB)** | Very Hard | Ring topology, eventual consistency, read repair | 75 min |
+| Day 55 | **Facebook (Social Network)** | Very Hard | Graph DB, privacy, real-time notifications | 75 min |
+| Day 56 | **LinkedIn (Connections + Feed)** | Very Hard | Graph algorithms, feed ranking, job recommendations | 70 min |
+| Day 57 | **Evernote (Note Taking + Sync)** | Very Hard | Rich content, encryption, offline-first, sync | 70 min |
+| Day 58 | **Dropbox (File Sync Service)** | Very Hard | Delta sync, versioning, conflict resolution | 75 min |
+| Day 59 | **Docker Registry (Container Storage)** | Very Hard | Distributed image storage, layering, replication | 70 min |
+| Day 60 | **AWS Lambda (Serverless)** | Very Hard | Scheduling, scaling, cold starts, isolation | 75 min |
 
-### Phase 5: YOUR REAL APP (Days 56-65) — Custom duration
+### Phase 5: YOUR REAL APP (Days 61-70) — Custom duration
 **Goal:** Design critical systems for your SaaS+Fintech platform
 
 | Day | System | Your Pain Point | Focus | Approx Time |
 |-----|--------|------------------|-------|------------|
-| Day 56 | **Reporting System** | Reports hanging | Async processing, materialized views, caching | 45 min |
-| Day 57 | **Data Pipeline (ETL)** | Real-time analytics | Streaming, batching, incremental updates | 50 min |
-| Day 58 | **User Onboarding Flow** | Conversion optimization | Multi-step, validation, emails, notifications | 40 min |
-| Day 59 | **Payment Processing** | Fintech core | Transactions, retries, idempotency, audit | 60 min |
-| Day 60 | **Search/Autocomplete** | User experience | Indexing, ranking, real-time suggestions | 45 min |
-| Day 61 | **Audit Logging (Enhanced)** | Compliance | Tamper-proof logs, compliance reporting | 40 min |
-| Day 62 | **Analytics Dashboard** | Business intelligence | Real-time metrics, aggregations, visualizations | 50 min |
-| Day 63 | **Multi-region Replication** | Global expansion | Data consistency, conflict resolution | 55 min |
-| Day 64 | **Disaster Recovery System** | Business continuity | Backup, restore, failover, testing | 50 min |
-| Day 65 | **Migration from Legacy** | Technical debt | .NET Framework → .NET 8, session → JWT | 60 min |
+| Day 61 | **Reporting System** | Reports hanging | Async processing, materialized views, caching | 45 min |
+| Day 62 | **Data Pipeline (ETL)** | Real-time analytics | Streaming, batching, incremental updates | 50 min |
+| Day 63 | **User Onboarding Flow** | Conversion optimization | Multi-step, validation, emails, notifications | 40 min |
+| Day 64 | **Payment Processing** | Fintech core | Transactions, retries, idempotency, audit | 60 min |
+| Day 65 | **Search/Autocomplete** | User experience | Indexing, ranking, real-time suggestions | 45 min |
+| Day 66 | **Audit Logging (Enhanced)** | Compliance | Tamper-proof logs, compliance reporting | 40 min |
+| Day 67 | **Analytics Dashboard** | Business intelligence | Real-time metrics, aggregations, visualizations | 50 min |
+| Day 68 | **Multi-region Replication** | Global expansion | Data consistency, conflict resolution | 55 min |
+| Day 69 | **Disaster Recovery System** | Business continuity | Backup, restore, failover, testing | 50 min |
+| Day 70 | **Migration from Legacy** | Technical debt | .NET Framework → .NET 8, session → JWT | 60 min |
 
-### Phase 6: ADVANCED TOPICS (Days 66+) — Optional deep dives
+### Phase 6: ADVANCED TOPICS (Days 71+) — Optional deep dives
 **Goal:** Specialize in specific areas
 
 **Distributed Systems Theory:**
