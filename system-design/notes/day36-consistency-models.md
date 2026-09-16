@@ -3,8 +3,8 @@
 **Date:** 2026-09-09
 **Duration:** ~45 mins
 **Status:** ✅ Complete
-**Phase:** 2.5 Bridge (Days 36–40)
-**Format:** Teaching day — mechanism and worked examples first, testing deferred to Day 38
+**Phase:** 2.5 Bridge (Days 36–41)
+**Format:** Teaching day — mechanism and worked examples first, testing deferred to Day 39
 **Checks:** 3/3 correct, with one framing relapse (see below)
 
 ---
@@ -257,7 +257,7 @@ the system reaching a wrong state.
 > **Reach for linearizability when concurrent writers can corrupt state, not when
 > the data feels important.**
 
-This is the specific habit Day 38 re-tests.
+This is the specific habit Day 39 re-tests.
 
 ---
 
@@ -279,5 +279,5 @@ This is the specific habit Day 38 re-tests.
 
 ## Next: Day 37 — Search Engine (finish Day 33)
 
-Ranking, sharding, freshness, tenant isolation. Then Day 38 re-tests this
+Ranking, sharding, freshness, tenant isolation. Then Day 39 re-tests this
 material cold — gate for Phase 3 is ≥ 8/10.

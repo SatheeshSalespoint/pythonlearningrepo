@@ -321,24 +321,25 @@ under simultaneous constraints. Both are current fail states. Going in now means
 learning the hard systems on top of an unstable foundation.
 
 This is not a setback. **Two of six criteria failing at a checkpoint is exactly
-what a checkpoint is for** — the alternative was discovering it on Day 42 with
+what a checkpoint is for** — the alternative was discovering it on Day 43 with
 five confusing days behind it.
 
 ---
 
-## Adjusted Plan: Bridge Phase, Days 36–40
+## Adjusted Plan: Bridge Phase, Days 36–41
 
-Five days closing the two failed criteria before Phase 3 reopens on Day 41.
+Five days closing the two failed criteria before Phase 3 reopens on Day 42.
 
 | Day | Focus | Target |
 |---|---|---|
 | **36** | **Consistency models, mechanism-first** | Read-your-own-writes, monotonic reads, causal, linearizable — each with a worked example. Load the vocabulary before designing. |
 | **37** | **Day 33 finish — Search Engine** | Close the open day: ranking, sharding, freshness, tenant isolation. Directly feeds the Round 4 gap. |
-| **38** | **Consistency re-test** | Re-run Round 3 cold, plus two new scenarios. Must reach 8/10 to advance. |
-| **39** | **Multi-constraint drill** | Three scenarios with deliberately conflicting constraints. Practise naming the conflicting *pair* and pricing the relaxation. |
-| **40** | **Round 6 + re-assessment** | Real-time/strong consistency round, then re-score all six criteria. |
+| **38** | **Applied session** (not planned — own take-home) | Scaled the Xe rate-alerts take-home to production. Not a substitute for the re-test below, but real practice on the same skill (guarantee/cost, dual-write). |
+| **39** | **Consistency re-test** | Re-run Round 3 cold, plus two new scenarios. Must reach 8/10 to advance. |
+| **40** | **Multi-constraint drill** | Three scenarios with deliberately conflicting constraints. Practise naming the conflicting *pair* and pricing the relaxation. |
+| **41** | **Round 6 + re-assessment** | Real-time/strong consistency round, then re-score all six criteria. |
 
-**Gate for Phase 3:** consistency ≥ 8/10 **and** multi-constraint ≥ 7/10 on Day 40.
+**Gate for Phase 3:** consistency ≥ 8/10 **and** multi-constraint ≥ 7/10 on Day 41.
 
 **Standing drill, every day from here** — before designing anything, ask:
 > *"What in this brief am I taking as given that I should be challenging?"*

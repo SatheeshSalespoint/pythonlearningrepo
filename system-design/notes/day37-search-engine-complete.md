@@ -3,7 +3,7 @@
 **Date:** 2026-09-10
 **Duration:** ~60 mins
 **Status:** ✅ Complete — Day 33 now closed
-**Phase:** 2.5 Bridge (Days 36–40)
+**Phase:** 2.5 Bridge (Days 36–41)
 **Difficulty:** Medium → Hard (information retrieval, no prior anchor)
 **Confidence:** 7/10 (up from 5/10 on Day 33)
 
@@ -412,7 +412,7 @@ arithmetic remediation) and saturation was visible by the end.
 
 ---
 
-## Next: Day 38 — Consistency Re-Test
+## Next: Day 39 — Consistency Re-Test
 
 Day 36 material, cold, two days later. Round 3 re-run plus two new scenarios.
 **Gate for Phase 3: ≥ 8/10.**
