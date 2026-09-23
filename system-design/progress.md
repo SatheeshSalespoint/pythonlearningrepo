@@ -128,6 +128,33 @@
 **Standing drill from Day 36 onward** — before designing anything, ask:
 *"What in this brief am I taking as given that I should be challenging?"*
 
+### Phase 2.75: FOUNDATIONS REVIEW (inserted 2026-09-24, before Phase 3 begins)
+**Goal:** Days 1-19 were taught as pure lecture, never scenario-tested — user flagged (2026-09-24)
+that some concepts (e.g. Redis persistence/recovery) feel shaky despite being "covered." Days
+20-34 already had some scenario practice, so get a lighter pass. Grouped by topic relatedness,
+paced faster than the bridge-phase drills — cold scenario questions, same format as Days 39-42,
+adjust pacing if it's not working.
+
+| Cluster | Days covered | Topics | Depth |
+|---|---|---|---|
+| 1 | 1-2 | Scalability, Load Balancers | Full — never scenario-tested |
+| 2 | 3, 9 | Caching, CDN | Full — never scenario-tested |
+| 3 | 4, 10 | Databases (SQL vs NoSQL), Indexing | Full — never scenario-tested |
+| 4 | 5 | CAP Theorem | Full — never scenario-tested |
+| 5 | 6 | API Design (REST/gRPC/GraphQL) | Full — never scenario-tested |
+| 6 | 7, 14 | Message Queues, Event-Driven Architecture | Full — never scenario-tested |
+| 7 | 8, 13 | Rate Limiting, Circuit Breakers | Full — never scenario-tested |
+| 8 | 11-12 | Microservices vs Monolith, Service Discovery | Full — never scenario-tested |
+| 9 | 15-16 | CQRS, Event Sourcing | Full — never scenario-tested |
+| 10 | 17-19 | Consistent Hashing, Sharding, Replication | Full — never scenario-tested |
+| 11 | 20-24 | URL Shortener, Auth, Analytics, Feed, Autocomplete | Light — some practice already |
+| 12 | 25-27 | Rate Limiter, Cache Invalidation, Metrics | Light — some practice already |
+| 13 | 28-32 | Twitter Feed, Msg Queue, Notifications, Redis KV Store | Light — some practice already |
+| 14 | 33-34 | Search Engine, Leaderboard | Very light — closed/re-tested already (Day 37, Day 34 itself) |
+
+**Not a gate phase** — the goal is confidence and catching gaps, not a pass/fail score. Phase 3
+(Uber, Day 43) resumes once this review is done or the user decides to stop early.
+
 ### Phase 3: HARD (Days 43-52) — 45-60 mins each
 **Goal:** Master complex tradeoffs, real-time systems, strong consistency
 
