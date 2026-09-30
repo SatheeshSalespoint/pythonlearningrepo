@@ -137,12 +137,12 @@ adjust pacing if it's not working.
 
 | Cluster | Days covered | Topics | Depth |
 |---|---|---|---|
-| 1 | 1-2 | Scalability, Load Balancers | Full — never scenario-tested |
-| 2 | 3, 9 | Caching, CDN | Full — never scenario-tested |
-| 3 | 4, 10 | Databases (SQL vs NoSQL), Indexing | Full — never scenario-tested |
-| 4 | 5 | CAP Theorem | Full — never scenario-tested |
-| 5 | 6 | API Design (REST/gRPC/GraphQL) | Full — never scenario-tested |
-| 6 | 7, 14 | Message Queues, Event-Driven Architecture | Full — never scenario-tested |
+| 1 | 1-2 | Scalability, Load Balancers | ✅ Done 2026-09-24 — see `foundations-review-clusters-1-5.md` |
+| 2 | 3, 9 | Caching, CDN | ✅ Done 2026-09-30 |
+| 3 | 4, 10 | Databases (SQL vs NoSQL), Indexing | ✅ Done 2026-09-30 |
+| 4 | 5 | CAP Theorem | ✅ Done 2026-10-01 — strongest cluster so far |
+| 5 | 6 | API Design (REST/gRPC/GraphQL) | ✅ Done 2026-10-01 |
+| 6 | 7, 14 | Message Queues, Event-Driven Architecture | Full — never scenario-tested — NEXT |
 | 7 | 8, 13 | Rate Limiting, Circuit Breakers | Full — never scenario-tested |
 | 8 | 11-12 | Microservices vs Monolith, Service Discovery | Full — never scenario-tested |
 | 9 | 15-16 | CQRS, Event Sourcing | Full — never scenario-tested |
