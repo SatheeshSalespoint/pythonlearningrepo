@@ -46,6 +46,22 @@ if (data == null) {
 return data;
 ```
 
+**The write side of Cache-Aside (this is the other half — don't skip it):**
+write to the DB only, then **invalidate** (delete) the cache key — never write the
+new value into the cache directly from the write path. The cache is only ever
+repopulated by a *read*, lazily, next time someone asks:
+
+```csharp
+await _db.UpdateUserAsync(123, newData);   // DB is the source of truth
+await _redis.DeleteAsync("user:123");      // invalidate, don't update
+// next GetAsync("user:123") → miss → re-reads DB → repopulates cache, fresh
+```
+
+Writing the new value straight into the cache instead of deleting it would
+reconstruct **Write-through** by accident (see below) — now every write touches
+two systems, with the dual-write risk that implies. Cache-Aside avoids that by
+having the write path touch only the DB, always.
+
 ---
 
 ## Write Strategies
@@ -55,6 +71,15 @@ return data;
 | **Write-through** | Write to cache AND DB together | Slower writes, always consistent |
 | **Write-back** | Write to cache, DB later async | Fast writes, risk of data loss |
 | **Write-around** | Write to DB only, bypass cache | Cache stays clean, first read is slow |
+
+**Write-around vs. Cache-Aside's write path — don't conflate these, they differ
+in one important way:** Write-around leaves the *old* cached value sitting
+there untouched, stale, until its TTL naturally expires. Cache-Aside's write
+path (above) actively **deletes** the stale entry immediately, so the very
+next read is guaranteed fresh instead of waiting out a TTL window. Write-around
+accepts a window of staleness to avoid an extra delete call on every write;
+Cache-Aside's invalidation removes that staleness window at the cost of that
+extra call. Pick based on how much staleness the data can tolerate.
 
 ---
 
