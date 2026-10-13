@@ -144,10 +144,10 @@ adjust pacing if it's not working.
 | 5 | 6 | API Design (REST/gRPC/GraphQL) | ✅ Done 2026-10-01 |
 | 6 | 7, 14 | Message Queues, Event-Driven Architecture | ✅ Done 2026-10-06 |
 | 7 | 8, 13 | Rate Limiting, Circuit Breakers | ✅ Done 2026-10-06 |
-| 8 | 11-12 | Microservices vs Monolith, Service Discovery | Full — never scenario-tested — NEXT |
-| 9 | 15-16 | CQRS, Event Sourcing | Full — never scenario-tested |
-| 10 | 17-19 | Consistent Hashing, Sharding, Replication | Full — never scenario-tested |
-| 11 | 20-24 | URL Shortener, Auth, Analytics, Feed, Autocomplete | Light — some practice already |
+| 8 | 11-12 | Microservices vs Monolith, Service Discovery | ✅ Done 2026-10-13 |
+| 9 | 15-16 | CQRS, Event Sourcing | ✅ Done 2026-10-13 — strongest cluster so far |
+| 10 | 17-19 | Consistent Hashing, Sharding, Replication | ✅ Done 2026-10-13 |
+| 11 | 20-24 | URL Shortener, Auth, Analytics, Feed, Autocomplete | Light — some practice already — NEXT |
 | 12 | 25-27 | Rate Limiter, Cache Invalidation, Metrics | Light — some practice already |
 | 13 | 28-32 | Twitter Feed, Msg Queue, Notifications, Redis KV Store | Light — some practice already |
 | 14 | 33-34 | Search Engine, Leaderboard | Very light — closed/re-tested already (Day 37, Day 34 itself) |
