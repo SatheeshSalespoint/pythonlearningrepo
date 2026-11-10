@@ -305,7 +305,7 @@ READ PATH (User requests balance):
 ✓ Publish only on critical changes = sustainable at scale  
 
 ### Reliability Patterns
-✓ Outbox pattern = guaranteed delivery (exactly-once)  
+✓ Outbox pattern = guaranteed delivery (**at-least-once**, not exactly-once — relay can re-publish after a crash, so consumers must be idempotent; corrected 2026-11-10)  
 ✓ TTL fallback = safety net for unreliable event systems  
 ✓ Hybrid approach = best of both worlds (instant + reliable)  
 

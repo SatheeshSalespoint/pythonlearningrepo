@@ -69,6 +69,13 @@ Con: Clicking a link = access from different user
      → Slow! ❌
 ```
 
+> **Correction (2026-11-10, foundations review):** this rejection doesn't hold
+> given Step 3's key format. `short_url = base62(user_id) + base62(sequence)`
+> carries the user_id, so a click can decode it and route to a single shard.
+> Sharding by user_id therefore serves *both* clicks and the dashboard from
+> one shard. Its real cost is **skew**: a giant account's data (and some
+> traffic) lands on one shard. See `foundations-review-cluster-11.md`.
+
 ### Option 2: Shard by short_url ✅ (CHOSEN)
 ```
 Pro: ✓ Clicking short_url → hash determines shard immediately
