@@ -155,6 +155,8 @@ to their own DB and use Outbox (with its relay) to hand off.
 
 ## Open Questions — carry over to next session
 
+> **Update 2026-11-11:** items 1 and 2 closed in `foundations-review-cluster-11-part2.md`; its "Still Open" list supersedes this one.
+
 1. **Saga:** what if a compensation (the refund) itself fails?
 2. **Scale cube:** which axis/service for: (a) Transaction Service CPU 95%,
    shards fine; (b) Auth replicas 90% CPU on token lookups; (c) one

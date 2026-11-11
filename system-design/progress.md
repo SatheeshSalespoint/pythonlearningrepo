@@ -147,7 +147,7 @@ adjust pacing if it's not working.
 | 8 | 11-12 | Microservices vs Monolith, Service Discovery | ✅ Done 2026-10-13 |
 | 9 | 15-16 | CQRS, Event Sourcing | ✅ Done 2026-10-13 — strongest cluster so far |
 | 10 | 17-19 | Consistent Hashing, Sharding, Replication | ✅ Done 2026-10-13 |
-| 11 | 20-24 | URL Shortener, Auth, Analytics, Feed, Autocomplete | 🔄 In progress 2026-11-10 — Q1 done + Saga/Outbox/scale-cube detour; Q2 (Auth) next — see `foundations-review-cluster-11.md` |
+| 11 | 20-24 | URL Shortener, Auth, Analytics, Feed, Autocomplete | 🔄 In progress — Part 1 (2026-11-10): Q1 + Saga/Outbox/scale cube; Part 2 (2026-11-11): sale snapshots, schema evolution, Saga compensation failure, scale-cube symptoms. Q2 (Auth) next — see `foundations-review-cluster-11.md` + `-part2.md` |
 | 12 | 25-27 | Rate Limiter, Cache Invalidation, Metrics | Light — some practice already |
 | 13 | 28-32 | Twitter Feed, Msg Queue, Notifications, Redis KV Store | Light — some practice already |
 | 14 | 33-34 | Search Engine, Leaderboard | Very light — closed/re-tested already (Day 37, Day 34 itself) |
